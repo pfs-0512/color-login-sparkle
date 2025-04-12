@@ -97,7 +97,7 @@ const LoginForm = () => {
             </Button>
           </div>
 
-          <div className="mt-6 flex items-center justify-between">
+          <div className="mt-6 flex items-center justify-center gap-4">
             <h3 className="text-lg font-bold text-gray-800">紹介ムービー</h3>
             <Image 
               src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
