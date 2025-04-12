@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -5,11 +6,13 @@ import { Mail, Lock, LogIn } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Image from "@/components/ui/image";
 import { Separator } from "@/components/ui/separator";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { toast } = useToast();
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,14 +93,29 @@ const LoginForm = () => {
             ログイン
           </Button>
 
-          <div className="mt-4 flex items-center justify-center gap-4">
-            <h3 className="text-lg font-bold text-gray-800">紹介ムービーはこちら</h3>
-            <Image 
-              src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
-              alt="紹介ムービー" 
-              className="w-8 h-8 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
-            />
-          </div>
+          <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+            <DialogTrigger asChild>
+              <div className="mt-4 flex items-center justify-center gap-4 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => setIsVideoOpen(true)}>
+                <h3 className="text-lg font-bold text-gray-800">紹介ムービーはこちら</h3>
+                <Image 
+                  src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
+                  alt="紹介ムービー" 
+                  className="w-8 h-8 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
+                />
+              </div>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[650px] p-0">
+              <div className="responsive-video">
+                <iframe 
+                  src="https://www.youtube.com/embed/RCPM4nh6Oxw?autoplay=1" 
+                  title="COCOPiTA 紹介ムービー" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                  className="w-full aspect-video"
+                ></iframe>
+              </div>
+            </DialogContent>
+          </Dialog>
 
           <div className="text-center text-sm space-y-3 pt-2">
             <Separator className="mb-3" />
