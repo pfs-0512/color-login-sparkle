@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Mail, Lock, LogIn } from "lucide-react";
+import { Mail, Lock, LogIn, Youtube } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Image from "@/components/ui/image";
 
@@ -83,13 +83,18 @@ const LoginForm = () => {
             ログイン
           </Button>
 
-        <div className="text-center mt-6">
-          <Image 
-            src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
-            alt="紹介ムービー" 
-            className="w-12 h-12 mx-auto object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
-          />
-        </div>
+          <div className="flex items-center justify-center gap-2 mt-6">
+            <h3 className="text-lg font-bold text-gray-800">紹介ムービー</h3>
+            <Youtube className="h-6 w-6 text-cocopita-blue cursor-pointer hover:opacity-80 transition-opacity" />
+          </div>
+
+          <div className="text-center mt-6">
+            <Image 
+              src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
+              alt="紹介ムービー" 
+              className="w-12 h-12 mx-auto object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
+            />
+          </div>
 
           <div className="text-center text-sm space-y-3 pt-2">
             <p className="text-right border-b border-gray-300 pb-2">
