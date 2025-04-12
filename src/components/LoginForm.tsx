@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,7 @@ const LoginForm = () => {
   };
 
   const handleSignupClick = () => {
+    // Navigate to signup page without triggering the login form submission
     window.location.href = "https://onelinavi.com/page_signup.html";
   };
 
@@ -137,6 +139,7 @@ const LoginForm = () => {
               variant="outline" 
               className="w-full mt-3"
               onClick={handleSignupClick}
+              type="button" // Added type="button" to prevent form submission
             >
               新規登録
             </Button>
