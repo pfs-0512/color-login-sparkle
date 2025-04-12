@@ -1,10 +1,10 @@
-
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Mail, Lock, LogIn } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Image from "@/components/ui/image";
+import { Separator } from "@/components/ui/separator";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -100,6 +100,7 @@ const LoginForm = () => {
           </div>
 
           <div className="text-center text-sm space-y-3 pt-2">
+            <Separator className="mb-3" />
             <Button 
               variant="outline" 
               className="w-full mt-3"
@@ -114,4 +115,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
