@@ -16,7 +16,7 @@ const Index = () => {
         <LoginForm />
         
         <div className="mt-8 text-center text-sm text-gray-500">
-          <p>© 2025 COCO-PiTA All Rights Reserved.</p>
+          <p>© 2025 COCOPiTA All Rights Reserved.</p>
         </div>
       </div>
     </div>
