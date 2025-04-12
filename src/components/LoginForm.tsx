@@ -95,7 +95,7 @@ const LoginForm = () => {
             <Image 
               src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
               alt="紹介ムービー" 
-              className="w-12 h-12 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
+              className="w-8 h-8 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
             />
           </div>
 
