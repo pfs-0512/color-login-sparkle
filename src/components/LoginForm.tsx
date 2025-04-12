@@ -77,16 +77,16 @@ const LoginForm = () => {
 
           <Button 
             type="submit" 
-            className="w-full btn-blue flex items-center justify-center gap-2 py-5"
+            className="w-full btn-blue flex items-center justify-center gap-2 py-6 text-base" // Increased py and text size
           >
             <LogIn className="h-5 w-5" />
             ログイン
           </Button>
 
           <div className="text-center text-sm space-y-3 pt-2">
-            <p>
+            <p className="text-right">
               <a href="#" className="text-cocopita-blue hover:underline">
-                パスワードを忘れた方は
+                パスワードをお忘れですか？
               </a>
             </p>
             <p>
