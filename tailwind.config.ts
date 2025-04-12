@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,17 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// COCO-PiTA colors
+				cocopita: {
+          blue: '#1E90FF',
+          green: '#78C265',
+          lightgreen: '#DEECD5',
+          pink: '#FF7F7F',
+          orange: '#FFA07A',
+          yellow: '#FFD15E',
+          lightpink: '#FFF0F0',
+          lightblue: '#E8F4FF',
 				}
 			},
 			borderRadius: {
