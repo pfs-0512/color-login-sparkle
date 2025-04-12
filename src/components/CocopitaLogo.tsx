@@ -1,16 +1,15 @@
 
 import React from "react";
+import Image from "@/components/ui/image";
 
 const CocopitaLogo = () => {
   return (
-    <div className="text-center mb-6">
-      <h1 className="text-3xl font-bold flex items-center justify-center">
-        <span className="text-cocopita-green">COCO</span>
-        <span className="text-cocopita-blue">-PiTA</span>
-        <span className="text-xs ml-1 bg-cocopita-pink text-white px-1 rounded">
-          サービス一覧
-        </span>
-      </h1>
+    <div className="text-center mb-6 flex justify-center items-center">
+      <Image 
+        src="/lovable-uploads/8ea52db0-c39c-475b-a84c-aa880f74b351.png" 
+        alt="CocopitaLogo" 
+        className="max-h-24 object-contain"
+      />
     </div>
   );
 };
