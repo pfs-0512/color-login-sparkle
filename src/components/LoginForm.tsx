@@ -83,6 +83,15 @@ const LoginForm = () => {
             ログイン
           </Button>
 
+          <div className="mt-4 flex items-center justify-center gap-4">
+            <h3 className="text-lg font-bold text-gray-800">紹介ムービー</h3>
+            <Image 
+              src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
+              alt="紹介ムービー" 
+              className="w-12 h-12 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
+            />
+          </div>
+
           <div className="text-center text-sm space-y-3 pt-2">
             <p className="text-right border-b border-gray-300 pb-2">
               <a href="#" className="text-cocopita-blue hover:underline">
@@ -95,15 +104,6 @@ const LoginForm = () => {
             >
               新規登録
             </Button>
-          </div>
-
-          <div className="mt-6 flex items-center justify-center gap-4">
-            <h3 className="text-lg font-bold text-gray-800">紹介ムービー</h3>
-            <Image 
-              src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
-              alt="紹介ムービー" 
-              className="w-12 h-12 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
-            />
           </div>
         </form>
       </div>
