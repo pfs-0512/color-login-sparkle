@@ -35,6 +35,10 @@ const LoginForm = () => {
     window.location.href = "https://onelinavi.com/page_signup.html";
   };
 
+  const handlePasswordResetClick = () => {
+    window.location.href = "https://onelinavi.com/password_reset.html";
+  };
+
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="login-card p-8">
@@ -83,7 +87,14 @@ const LoginForm = () => {
           </div>
 
           <div className="text-right mb-4">
-            <a href="#" className="text-cocopita-blue hover:underline text-sm">
+            <a 
+              href="#" 
+              className="text-cocopita-blue hover:underline text-sm"
+              onClick={(e) => {
+                e.preventDefault();
+                handlePasswordResetClick();
+              }}
+            >
               パスワードをお忘れですか？
             </a>
           </div>
