@@ -77,23 +77,24 @@ const LoginForm = () => {
 
           <Button 
             type="submit" 
-            className="w-full btn-blue flex items-center justify-center gap-2 py-6 text-base" // Increased py and text size
+            className="w-full btn-blue flex items-center justify-center gap-2 py-6 text-base"
           >
             <LogIn className="h-5 w-5" />
             ログイン
           </Button>
 
           <div className="text-center text-sm space-y-3 pt-2">
-            <p className="text-right">
+            <p className="text-right border-b border-gray-300 pb-2">
               <a href="#" className="text-cocopita-blue hover:underline">
                 パスワードをお忘れですか？
               </a>
             </p>
-            <p>
-              <a href="#" className="text-cocopita-green hover:underline">
-                新規登録
-              </a>
-            </p>
+            <Button 
+              variant="outline" 
+              className="w-full mt-3"
+            >
+              新規登録
+            </Button>
           </div>
         </form>
       </div>
