@@ -32,6 +32,10 @@ const LoginForm = () => {
     }
   };
 
+  const handleSignupClick = () => {
+    window.location.href = "https://onelinavi.com/page_signup.html";
+  };
+
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="login-card p-8">
@@ -122,6 +126,7 @@ const LoginForm = () => {
             <Button 
               variant="outline" 
               className="w-full mt-3"
+              onClick={handleSignupClick}
             >
               新規登録
             </Button>
