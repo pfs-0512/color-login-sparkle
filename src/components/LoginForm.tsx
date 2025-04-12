@@ -1,9 +1,9 @@
-
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Mail, Lock, LogIn } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import Image from "@/components/ui/image";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -95,6 +95,15 @@ const LoginForm = () => {
             >
               新規登録
             </Button>
+          </div>
+
+          <div className="mt-6 flex items-center justify-between">
+            <h3 className="text-lg font-bold text-gray-800">紹介ムービー</h3>
+            <Image 
+              src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
+              alt="紹介ムービー" 
+              className="w-12 h-12 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
+            />
           </div>
         </form>
       </div>
