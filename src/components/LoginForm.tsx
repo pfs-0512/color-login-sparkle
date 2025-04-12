@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -100,7 +99,7 @@ const LoginForm = () => {
           <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
             <DialogTrigger asChild>
               <div className="mt-4 flex items-center justify-center gap-4 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => setIsVideoOpen(true)}>
-                <h3 className="text-lg font-bold text-gray-800">紹介ムービーはこちら</h3>
+                <h3 className="text-sm font-bold text-gray-800">紹介ムービーはこちら</h3>
                 <Image 
                   src="/lovable-uploads/3b67550b-144e-4c48-b504-dbb857ce5220.png" 
                   alt="紹介ムービー" 
