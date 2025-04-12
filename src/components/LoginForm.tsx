@@ -107,14 +107,14 @@ const LoginForm = () => {
                 />
               </div>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[650px] p-0">
+            <DialogContent className="sm:max-w-[850px] p-0">
               <div className="responsive-video">
                 <iframe 
                   src="https://www.youtube.com/embed/RCPM4nh6Oxw?autoplay=1" 
                   title="COCOPiTA 紹介ムービー" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
-                  className="w-full aspect-video"
+                  className="w-full aspect-video h-[500px]"
                 ></iframe>
               </div>
             </DialogContent>
