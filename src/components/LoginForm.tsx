@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -75,6 +76,12 @@ const LoginForm = () => {
             </div>
           </div>
 
+          <div className="text-right mb-4">
+            <a href="#" className="text-cocopita-blue hover:underline text-sm">
+              パスワードをお忘れですか？
+            </a>
+          </div>
+
           <Button 
             type="submit" 
             className="w-full btn-blue flex items-center justify-center gap-2 py-6 text-base"
@@ -93,11 +100,6 @@ const LoginForm = () => {
           </div>
 
           <div className="text-center text-sm space-y-3 pt-2">
-            <p className="text-right border-b border-gray-300 pb-2">
-              <a href="#" className="text-cocopita-blue hover:underline">
-                パスワードをお忘れですか？
-              </a>
-            </p>
             <Button 
               variant="outline" 
               className="w-full mt-3"
