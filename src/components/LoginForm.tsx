@@ -60,9 +60,7 @@ const LoginForm = () => {
             setIsOpen={setIsVideoOpen}
           />
 
-          <LinksSection 
-            openLinkInNewTab={openLinkInNewTab}
-          />
+          <LinksSection openLinkInNewTab={openLinkInNewTab} />
         </form>
       </div>
     </div>
