@@ -1,7 +1,5 @@
-
 import React, { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-import { Mail, Send, ArrowLeft, X } from "lucide-react";
+import { Mail, Send, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
 import CocopitaLogo from "@/components/CocopitaLogo";
@@ -16,26 +14,16 @@ import {
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { toast } = useToast();
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!email) {
-      toast({
-        title: "エラー",
-        description: "メールアドレスを入力してください。",
-        variant: "destructive",
-      });
       return;
     }
 
     // In a real app, this would call an API to send a password reset email
-    toast({
-      title: "送信完了",
-      description: "パスワード再設定メールを送信しました。",
-    });
     
     // Open the modal after successful submission
     setIsModalOpen(true);
