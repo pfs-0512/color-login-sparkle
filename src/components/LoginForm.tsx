@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -40,6 +39,10 @@ const LoginForm = () => {
 
   const handlePasswordResetClick = () => {
     window.location.href = "https://onelinavi.com/password_reset.html";
+  };
+
+  const openLinkInNewTab = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -136,15 +139,41 @@ const LoginForm = () => {
 
           <div className="text-center text-sm space-y-3 pt-2">
             <Separator className="mb-3" />
-            <Link to="/signup">
+            <div className="flex flex-col space-y-2">
               <Button 
+                onClick={() => openLinkInNewTab('https://onelilisted.com/user-manual/')}
                 variant="outline" 
-                className="w-full mt-3"
-                type="button" // Prevents form submission
+                className="w-full"
+                type="button"
               >
-                新規登録
+                新規登録・ポイントチャージご利用方法
               </Button>
-            </Link>
+              <Button 
+                onClick={() => openLinkInNewTab('https://onelinavi.com/terms.html')}
+                variant="outline" 
+                className="w-full"
+                type="button"
+              >
+                利用規約
+              </Button>
+              <Button 
+                onClick={() => openLinkInNewTab('https://onelinavi.com/privacy.html')}
+                variant="outline" 
+                className="w-full"
+                type="button"
+              >
+                プライバシーポリシー
+              </Button>
+              <Link to="/signup">
+                <Button 
+                  variant="outline" 
+                  className="w-full mt-3"
+                  type="button"
+                >
+                  新規登録
+                </Button>
+              </Link>
+            </div>
           </div>
         </form>
       </div>
