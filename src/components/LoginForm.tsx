@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import Image from "@/components/ui/image";
 import { Separator } from "@/components/ui/separator";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -135,14 +136,15 @@ const LoginForm = () => {
 
           <div className="text-center text-sm space-y-3 pt-2">
             <Separator className="mb-3" />
-            <Button 
-              variant="outline" 
-              className="w-full mt-3"
-              onClick={handleSignupClick}
-              type="button" // Added type="button" to prevent form submission
-            >
-              新規登録
-            </Button>
+            <Link to="/signup">
+              <Button 
+                variant="outline" 
+                className="w-full mt-3"
+                type="button" // Prevents form submission
+              >
+                新規登録
+              </Button>
+            </Link>
           </div>
         </form>
       </div>
