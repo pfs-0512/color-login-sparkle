@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Mail, Send, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -41,7 +42,7 @@ const ForgotPassword = () => {
         <CocopitaLogo />
         
         <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200">
-          <h1 className="text-xl font-bold text-center mb-6">パスワードを忘れた方</h1>
+          <h1 className="text-xl font-bold text-center mb-6">パスワードリセット</h1>
           
           <p className="text-sm text-gray-700 mb-6">
             パスワードを再設定するためのご案内をメールにてお送りいたします。
