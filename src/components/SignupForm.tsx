@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Mail, User, Phone, Home, Lock, MessageSquare, UserPlus } from "lucide-react";
+import { Mail, User, Phone, Home, Lock, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -76,7 +76,16 @@ const SignupForm = () => {
       <div className="signup-card p-8">
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">新規ユーザー登録</h2>
-          <p className="text-cocopita-blue text-sm">[新規登録・ポイントチャージご利用方法]</p>
+          <p className="text-cocopita-blue text-sm">
+            <a 
+              href="https://onelilisted.com/user-manual/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-cocopita-blue hover:underline"
+            >
+              [新規登録・ポイントチャージご利用方法]
+            </a>
+          </p>
         </div>
         
         <p className="text-gray-600 mb-6">
@@ -260,7 +269,24 @@ const SignupForm = () => {
                 htmlFor="terms"
                 className="text-sm font-normal text-gray-700 cursor-pointer"
               >
-                <span className="text-cocopita-blue">利用規約</span>と<span className="text-cocopita-blue">プライバシーポリシー</span>に同意します
+                <a 
+                  href="https://onelinavi.com/terms.html" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-cocopita-blue hover:underline"
+                >
+                  利用規約
+                </a>
+                と
+                <a 
+                  href="https://onelinavi.com/privacy.html" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-cocopita-blue hover:underline"
+                >
+                  プライバシーポリシー
+                </a>
+                に同意します
               </Label>
             </div>
           </div>
