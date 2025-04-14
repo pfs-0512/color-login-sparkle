@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Mail, User, Phone, Home, Lock, MessageSquare } from "lucide-react";
+import { Mail, User, Phone, Home, Lock, MessageSquare, Asterisk } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -25,7 +25,7 @@ const SignupForm = () => {
     e.preventDefault();
     
     // バリデーション
-    if (!lastName || !firstName || !email || !phone || !address || !password || !confirmPassword) {
+    if (!lastName || !firstName || !email || !nickname || !password || !confirmPassword) {
       toast({
         title: "入力エラー",
         description: "必須項目をすべて入力してください。",
@@ -71,6 +71,14 @@ const SignupForm = () => {
     });
   };
 
+  // 必須フィールドのラベル表示用のコンポーネント
+  const RequiredLabel = ({ children }: { children: React.ReactNode }) => (
+    <div className="flex items-center gap-1">
+      <span className="block text-sm font-medium text-gray-700">{children}</span>
+      <Asterisk className="h-3 w-3 text-red-500" />
+    </div>
+  );
+
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="signup-card p-8">
@@ -90,14 +98,15 @@ const SignupForm = () => {
         
         <p className="text-gray-600 mb-6">
           以下の必要事項にご入力の上、「登録する」ボタンを押してください。
+          <span className="text-red-500 ml-1">
+            <Asterisk className="h-3 w-3 inline-block" /> 印は必須項目です
+          </span>
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-                姓
-              </label>
+              <RequiredLabel>姓</RequiredLabel>
               <Input
                 id="lastName"
                 type="text"
@@ -105,13 +114,12 @@ const SignupForm = () => {
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 className="border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
+                required
               />
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-                名
-              </label>
+              <RequiredLabel>名</RequiredLabel>
               <Input
                 id="firstName"
                 type="text"
@@ -119,14 +127,13 @@ const SignupForm = () => {
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 className="border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
+                required
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              メールアドレス
-            </label>
+            <RequiredLabel>メールアドレス</RequiredLabel>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Mail className="h-5 w-5 text-gray-400" />
@@ -138,6 +145,7 @@ const SignupForm = () => {
                 className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -181,9 +189,7 @@ const SignupForm = () => {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="nickname" className="block text-sm font-medium text-gray-700">
-              ニックネーム
-            </label>
+            <RequiredLabel>ニックネーム</RequiredLabel>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <User className="h-5 w-5 text-gray-400" />
@@ -195,14 +201,13 @@ const SignupForm = () => {
                 className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
+                required
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              パスワード
-            </label>
+            <RequiredLabel>パスワード</RequiredLabel>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Lock className="h-5 w-5 text-gray-400" />
@@ -214,14 +219,13 @@ const SignupForm = () => {
                 className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-              パスワード（確認のためもう一度）
-            </label>
+            <RequiredLabel>パスワード（確認のためもう一度）</RequiredLabel>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Lock className="h-5 w-5 text-gray-400" />
@@ -233,6 +237,7 @@ const SignupForm = () => {
                 className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                required
               />
             </div>
           </div>
