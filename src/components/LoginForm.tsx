@@ -31,10 +31,6 @@ const LoginForm = () => {
     }
   };
 
-  const handlePasswordResetClick = () => {
-    window.location.href = "https://onelinavi.com/password_reset.html";
-  };
-
   const openLinkInNewTab = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -50,7 +46,7 @@ const LoginForm = () => {
             setEmail={setEmail}
             password={password}
             setPassword={setPassword}
-            handlePasswordResetClick={handlePasswordResetClick}
+            handlePasswordResetClick={() => {}}
           />
 
           <LoginButton />

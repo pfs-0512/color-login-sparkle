@@ -2,6 +2,7 @@
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Mail, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface LoginCredentialsProps {
   email: string;
@@ -59,16 +60,12 @@ const LoginCredentials = ({
       </div>
 
       <div className="text-right mb-4">
-        <a 
-          href="#" 
+        <Link 
+          to="/forgot-password" 
           className="text-cocopita-blue hover:underline text-sm"
-          onClick={(e) => {
-            e.preventDefault();
-            handlePasswordResetClick();
-          }}
         >
           パスワードをお忘れですか？
-        </a>
+        </Link>
       </div>
     </div>
   );
