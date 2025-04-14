@@ -1,12 +1,19 @@
 
 import React, { useState } from "react";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Mail, User, Phone, Home, Lock, MessageSquare, Asterisk } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
+import { 
+  NameFields, 
+  EmailField, 
+  PhoneField, 
+  AddressField, 
+  NicknameField, 
+  PasswordFields, 
+  ReferralCodeField 
+} from "./signup/FormFields";
+import TermsCheckbox from "./signup/TermsCheckbox";
+import SignupHeader from "./signup/SignupHeader";
 
 const SignupForm = () => {
   const [lastName, setLastName] = useState("");
@@ -71,230 +78,37 @@ const SignupForm = () => {
     });
   };
 
-  // 必須フィールドのラベル表示用のコンポーネント
-  const RequiredLabel = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex items-center gap-1">
-      <span className="block text-sm font-medium text-gray-700">{children}</span>
-      <Asterisk className="h-3 w-3 text-red-500" />
-    </div>
-  );
-
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="signup-card p-8">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">新規ユーザー登録</h2>
-          <p className="text-cocopita-blue text-sm">
-            <a 
-              href="https://onelilisted.com/user-manual/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-cocopita-blue hover:underline"
-            >
-              [新規登録・ポイントチャージご利用方法]
-            </a>
-          </p>
-        </div>
+        <SignupHeader />
         
-        <p className="text-gray-600 mb-6">
-          以下の必要事項にご入力の上、「登録する」ボタンを押してください。
-          <span className="text-red-500 ml-1">
-            <Asterisk className="h-3 w-3 inline-block" /> 印は必須項目です
-          </span>
-        </p>
-
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <RequiredLabel>姓</RequiredLabel>
-              <Input
-                id="lastName"
-                type="text"
-                placeholder="山田"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                className="border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
-                required
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <RequiredLabel>名</RequiredLabel>
-              <Input
-                id="firstName"
-                type="text"
-                placeholder="太郎"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                className="border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
-                required
-              />
-            </div>
-          </div>
+          <NameFields 
+            lastName={lastName}
+            setLastName={setLastName}
+            firstName={firstName}
+            setFirstName={setFirstName}
+          />
 
-          <div className="space-y-2">
-            <RequiredLabel>メールアドレス</RequiredLabel>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-gray-400" />
-              </div>
-              <Input
-                id="email"
-                type="email"
-                placeholder="info@example.com"
-                className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-          </div>
+          <EmailField email={email} setEmail={setEmail} />
+          
+          <PhoneField phone={phone} setPhone={setPhone} />
+          
+          <AddressField address={address} setAddress={setAddress} />
+          
+          <NicknameField nickname={nickname} setNickname={setNickname} />
+          
+          <PasswordFields 
+            password={password}
+            setPassword={setPassword}
+            confirmPassword={confirmPassword}
+            setConfirmPassword={setConfirmPassword}
+          />
+          
+          <ReferralCodeField referralCode={referralCode} setReferralCode={setReferralCode} />
 
-          <div className="space-y-2">
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-              電話番号
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Phone className="h-5 w-5 text-gray-400" />
-              </div>
-              <Input
-                id="phone"
-                type="tel"
-                placeholder="09012345678"
-                className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-              住所
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Home className="h-5 w-5 text-gray-400" />
-              </div>
-              <Input
-                id="address"
-                type="text"
-                placeholder="東京都新宿区西新宿1-2-3"
-                className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <RequiredLabel>ニックネーム</RequiredLabel>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <User className="h-5 w-5 text-gray-400" />
-              </div>
-              <Input
-                id="nickname"
-                type="text"
-                placeholder=""
-                className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
-                value={nickname}
-                onChange={(e) => setNickname(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <RequiredLabel>パスワード</RequiredLabel>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-gray-400" />
-              </div>
-              <Input
-                id="password"
-                type="password"
-                placeholder=""
-                className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <RequiredLabel>パスワード（確認のためもう一度）</RequiredLabel>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-gray-400" />
-              </div>
-              <Input
-                id="confirmPassword"
-                type="password"
-                placeholder=""
-                className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="referralCode" className="block text-sm font-medium text-gray-700">
-              紹介コード（お持ちの方のみ）
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <MessageSquare className="h-5 w-5 text-gray-400" />
-              </div>
-              <Input
-                id="referralCode"
-                type="text"
-                placeholder=""
-                className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green"
-                value={referralCode}
-                onChange={(e) => setReferralCode(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="flex items-start space-x-2 mt-4">
-            <Checkbox 
-              id="terms" 
-              checked={agreeToTerms}
-              onCheckedChange={(checked) => {
-                setAgreeToTerms(checked as boolean);
-              }}
-            />
-            <div className="grid gap-1.5 leading-none">
-              <Label
-                htmlFor="terms"
-                className="text-sm font-normal text-gray-700 cursor-pointer"
-              >
-                <a 
-                  href="https://onelinavi.com/terms.html" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-cocopita-blue hover:underline"
-                >
-                  利用規約
-                </a>
-                と
-                <a 
-                  href="https://onelinavi.com/privacy.html" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-cocopita-blue hover:underline"
-                >
-                  プライバシーポリシー
-                </a>
-                に同意します
-              </Label>
-            </div>
-          </div>
+          <TermsCheckbox agreeToTerms={agreeToTerms} setAgreeToTerms={setAgreeToTerms} />
 
           <Button 
             type="submit" 
