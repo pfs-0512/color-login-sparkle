@@ -1,15 +1,23 @@
 
 import React, { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Send, ArrowLeft } from "lucide-react";
+import { Mail, Send, ArrowLeft, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CocopitaLogo from "@/components/CocopitaLogo";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+} from "@/components/ui/alert-dialog";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,6 +36,15 @@ const ForgotPassword = () => {
       title: "送信完了",
       description: "パスワード再設定メールを送信しました。",
     });
+    
+    // Open the modal after successful submission
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    // Redirect to login page
+    navigate("/");
   };
 
   return (
@@ -91,6 +108,28 @@ const ForgotPassword = () => {
           <p>© 2025 COCOPiTA All Rights Reserved.</p>
         </div>
       </div>
+
+      {/* Reset Password Confirmation Modal */}
+      <AlertDialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <AlertDialogContent className="max-w-sm p-0 overflow-hidden border border-gray-300">
+          <div className="bg-gray-300 py-2 px-4">
+            <h3 className="text-center font-medium">パスワード再設定メールを送信しました</h3>
+          </div>
+          
+          <AlertDialogDescription className="px-6 py-4 text-black">
+            メール内に記載のURLにアクセスし、新しいパスワードを設定してください。
+          </AlertDialogDescription>
+          
+          <AlertDialogFooter className="px-6 pb-4 pt-0 flex justify-center">
+            <Button 
+              onClick={handleCloseModal}
+              className="bg-gray-500 hover:bg-gray-600 text-white"
+            >
+              閉じる
+            </Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
