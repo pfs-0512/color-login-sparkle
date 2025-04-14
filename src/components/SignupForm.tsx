@@ -7,6 +7,7 @@ import {
   NameFields, 
   EmailField, 
   PhoneField, 
+  PostalCodeField,
   AddressField, 
   NicknameField, 
   PasswordFields, 
@@ -20,13 +21,63 @@ const SignupForm = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [address, setAddress] = useState("");
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+
+  // 郵便番号から住所を取得する関数
+  const fetchAddress = async () => {
+    // 郵便番号からハイフンを除去
+    const cleanedPostalCode = postalCode.replace(/-/g, "");
+    
+    if (cleanedPostalCode.length !== 7) {
+      toast({
+        title: "エラー",
+        description: "有効な郵便番号を入力してください（7桁）",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsLoading(true);
+    
+    try {
+      const response = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${cleanedPostalCode}`);
+      const data = await response.json();
+      
+      if (data.status === 200 && data.results) {
+        const addressData = data.results[0];
+        const fullAddress = `${addressData.address1}${addressData.address2}${addressData.address3}`;
+        
+        setAddress(fullAddress);
+        toast({
+          title: "住所取得完了",
+          description: "郵便番号から住所を取得しました",
+        });
+      } else {
+        toast({
+          title: "住所取得エラー",
+          description: "郵便番号に該当する住所が見つかりませんでした",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("住所取得エラー:", error);
+      toast({
+        title: "エラー",
+        description: "住所の取得中にエラーが発生しました",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,6 +122,7 @@ const SignupForm = () => {
       firstName,
       email,
       phone,
+      postalCode,
       address,
       nickname,
       password,
@@ -94,6 +146,13 @@ const SignupForm = () => {
           <EmailField email={email} setEmail={setEmail} />
           
           <PhoneField phone={phone} setPhone={setPhone} />
+          
+          <PostalCodeField 
+            postalCode={postalCode} 
+            setPostalCode={setPostalCode} 
+            fetchAddress={fetchAddress}
+            isLoading={isLoading}
+          />
           
           <AddressField address={address} setAddress={setAddress} />
           

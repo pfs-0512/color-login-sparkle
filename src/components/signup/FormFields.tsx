@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Input } from "@/components/ui/input";
-import { Mail, User, Phone, Home, Lock, MessageSquare } from "lucide-react";
+import { Mail, User, Phone, Home, Lock, MessageSquare, Search } from "lucide-react";
 import RequiredLabel from "./RequiredLabel";
 
 // 名前フィールド (姓・名)
@@ -92,6 +91,47 @@ export const PhoneField = ({ phone, setPhone }: PhoneFieldProps) => (
         onChange={(e) => setPhone(e.target.value)}
       />
     </div>
+  </div>
+);
+
+// 郵便番号フィールド
+interface PostalCodeFieldProps {
+  postalCode: string;
+  setPostalCode: (value: string) => void;
+  fetchAddress: () => void;
+  isLoading: boolean;
+}
+
+export const PostalCodeField = ({ postalCode, setPostalCode, fetchAddress, isLoading }: PostalCodeFieldProps) => (
+  <div className="space-y-2">
+    <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700">
+      郵便番号
+    </label>
+    <div className="relative flex items-center">
+      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <Search className="h-5 w-5 text-gray-400" />
+      </div>
+      <Input
+        id="postalCode"
+        type="text"
+        placeholder="123-4567"
+        className="pl-10 border-gray-300 focus:border-cocopita-green focus:ring-cocopita-green flex-1"
+        value={postalCode}
+        onChange={(e) => {
+          const value = e.target.value.replace(/[^\d-]/g, '');
+          setPostalCode(value);
+        }}
+      />
+      <button
+        type="button"
+        onClick={fetchAddress}
+        disabled={postalCode.length < 7 || isLoading}
+        className="ml-2 px-4 py-2 bg-cocopita-green text-white rounded-md hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isLoading ? '検索中...' : '住所検索'}
+      </button>
+    </div>
+    <p className="text-xs text-gray-500">郵便番号を入力して住所を自動取得できます（例: 123-4567）</p>
   </div>
 );
 
