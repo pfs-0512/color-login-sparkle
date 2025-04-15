@@ -9,6 +9,10 @@ const SignupHeader = () => (
         お申込みフォーム
       </p>
       <h2 className="text-2xl font-bold text-gray-800 mb-2">新規ユーザー登録</h2>
+      <p className="text-sm text-gray-600 mt-2">
+        ※お申込み後、2ヶ月無料でご利用いただけます。<br />
+        （プランの変更に関しては加入後に500円・300円プランに変更可能です。）
+      </p>
     </div>
     
     <p className="text-gray-600 mb-5">
