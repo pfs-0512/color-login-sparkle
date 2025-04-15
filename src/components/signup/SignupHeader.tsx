@@ -4,7 +4,7 @@ import React from "react";
 const SignupHeader = () => (
   <>
     <div className="text-center mb-5">
-      <p className="text-cocopita-orange font-bold mb-2">PTA会員向け800円プランお申込みフォーム</p>
+      <p className="text-cocopita-orange font-bold text-xl mb-2">PTA会員向け800円プランお申込みフォーム</p>
       <h2 className="text-2xl font-bold text-gray-800 mb-2">新規ユーザー登録</h2>
     </div>
     
