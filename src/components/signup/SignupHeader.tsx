@@ -17,12 +17,8 @@ const SignupHeader = () => (
     
     <p className="text-gray-600 mb-5">
       以下の必要事項をご入力の上、登録ボタンを押してください。
-      <span className="text-red-500 ml-1">
-        <span className="text-red-500 inline-block h-3 w-3">*</span> 印は必須項目です
-      </span>
     </p>
   </>
 );
 
 export default SignupHeader;
-
