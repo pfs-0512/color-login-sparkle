@@ -5,8 +5,7 @@ const SignupHeader = () => (
   <>
     <div className="text-center mb-5">
       <p className="text-cocopita-orange font-bold text-2xl mb-2">
-        PTA会員向け800円プラン<br />
-        お申込みフォーム
+        800円プランお申込みフォーム<br />
       </p>
       <h2 className="text-2xl font-bold text-gray-800 mb-2">新規ユーザー登録</h2>
       <p className="text-sm text-gray-600 mt-2">
