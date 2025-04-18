@@ -2,6 +2,7 @@
 import React from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Link } from "react-router-dom";
 
 interface TermsCheckboxProps {
   agreeToTerms: boolean;
@@ -22,23 +23,23 @@ const TermsCheckbox = ({ agreeToTerms, setAgreeToTerms }: TermsCheckboxProps) =>
         htmlFor="terms"
         className="text-sm font-normal text-gray-700 cursor-pointer"
       >
-        <a 
-          href="https://onelinavi.com/terms.html" 
+        <Link 
+          to="/terms" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="text-cocopita-blue hover:underline"
         >
           利用規約
-        </a>
+        </Link>
         と
-        <a 
-          href="https://onelinavi.com/privacy.html" 
+        <Link 
+          to="/privacy" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="text-cocopita-blue hover:underline"
         >
           プライバシーポリシー
-        </a>
+        </Link>
         に同意します
       </Label>
     </div>
