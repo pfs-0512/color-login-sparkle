@@ -132,11 +132,6 @@ const SignupForm = () => {
         <SignupHeader />
         
         <form onSubmit={handleSubmit} className="space-y-5">
-          <MembershipType 
-            membershipType={membershipType}
-            setMembershipType={setMembershipType}
-          />
-
           <NameFields 
             lastName={lastName}
             setLastName={setLastName}
@@ -167,6 +162,11 @@ const SignupForm = () => {
           />
           
           <ReferralCodeField referralCode={referralCode} setReferralCode={setReferralCode} />
+
+          <MembershipType 
+            membershipType={membershipType}
+            setMembershipType={setMembershipType}
+          />
 
           <TermsCheckbox agreeToTerms={agreeToTerms} setAgreeToTerms={setAgreeToTerms} />
 
