@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -15,6 +14,7 @@ import {
 } from "./signup/FormFields";
 import TermsCheckbox from "./signup/TermsCheckbox";
 import SignupHeader from "./signup/SignupHeader";
+import MembershipType from "./signup/MembershipType";
 
 const SignupForm = () => {
   const [lastName, setLastName] = useState("");
@@ -29,11 +29,10 @@ const SignupForm = () => {
   const [referralCode, setReferralCode] = useState("");
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [membershipType, setMembershipType] = useState("current");
   const { toast } = useToast();
 
-  // 郵便番号から住所を取得する関数
   const fetchAddress = async () => {
-    // 郵便番号からハイフンを除去
     const cleanedPostalCode = postalCode.replace(/-/g, "");
     
     if (cleanedPostalCode.length !== 7) {
@@ -82,7 +81,6 @@ const SignupForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // バリデーション
     if (!lastName || !firstName || !email || !nickname || !password || !confirmPassword) {
       toast({
         title: "入力エラー",
@@ -110,13 +108,11 @@ const SignupForm = () => {
       return;
     }
 
-    // 登録処理（デモ用）
     toast({
       title: "登録完了",
       description: "ユーザー登録が完了しました。",
     });
     
-    // 実際にはAPI呼び出しなどで登録処理を行う
     console.log({
       lastName,
       firstName,
@@ -136,6 +132,11 @@ const SignupForm = () => {
         <SignupHeader />
         
         <form onSubmit={handleSubmit} className="space-y-5">
+          <MembershipType 
+            membershipType={membershipType}
+            setMembershipType={setMembershipType}
+          />
+
           <NameFields 
             lastName={lastName}
             setLastName={setLastName}
