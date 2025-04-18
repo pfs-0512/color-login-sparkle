@@ -2,7 +2,6 @@
 import React from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Circle } from "lucide-react";
 
 interface MembershipTypeProps {
   membershipType: string;
@@ -41,6 +40,15 @@ const MembershipType = ({ membershipType, setMembershipType }: MembershipTypePro
           <Label htmlFor="new" className="text-sm font-normal text-gray-700">
             賛助会員として新規に参加する
             <p className="text-xs text-gray-500 mt-1">※賛助会員に対する費用は一切発生いたしません。</p>
+          </Label>
+        </div>
+      </div>
+
+      <div className="flex items-start space-x-2">
+        <RadioGroupItem value="without_membership" id="without_membership" />
+        <div className="grid gap-1.5 leading-none">
+          <Label htmlFor="without_membership" className="text-sm font-normal text-gray-700">
+            賛助会員として入会せずにココピタを利用する
           </Label>
         </div>
       </div>
